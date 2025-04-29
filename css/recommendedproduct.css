@@ -1,0 +1,118 @@
+﻿.product_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem;
+}
+
+.product_recommended {
+    margin-bottom: 1rem;
+}
+
+.product {
+    display: flex;
+    padding-bottom: 15px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1 1 calc(20% - 1rem);
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+    .product > img {
+        width: 100%;
+    }
+
+    .product > img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+.product_small_info > h3 {
+    text-align: center;
+}
+
+.product_small_info > p {
+    color: green;
+    font-weight: 600;
+    text-align: center;
+}
+
+.product_actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.product_quantity_control {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+    .product_quantity_control > input {
+        width: 30px;
+        height: 30px;
+    }
+
+.product_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.product_quantity_control button {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+}
+
+    .product_quantity_control button:hover {
+        background-color: #e0e0e0;
+    }
+
+.product_quantity_control .quantity {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.add_to_cart, .buy_now {
+    padding: 10px;
+    border: none; /* Clean look */
+    border-radius: 5px; /* Rounded edges */
+    font-size: 16px; /* Readable text */
+    cursor: pointer; /* Hand icon on hover */
+    color: white; /* White text */
+    width: 40%;
+    max-width: 150px; /* Limit width for desktop */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+/* Specific colors for "Add to Cart" */
+.product_actions .add_to_cart {
+    background-color: #28a745; /* Green for "add" action */
+}
+
+/* Specific colors for "Buy Now" */
+.product_actions .buy_now {
+    background-color: #007bff; /* Blue for "buy" action */
+}
+
+/* Hover effects */
+.product_actions .add_to_cart:hover {
+    background-color: #218838; /* Darker green */
+}
+
+.product_actions .buy_now:hover {
+    background-color: #0056b3; /* Darker blue */
+}

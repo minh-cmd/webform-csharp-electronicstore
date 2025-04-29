@@ -1,0 +1,124 @@
+﻿
+
+body {
+    background-color: #f5f5f5;
+}
+
+/* Checkout Page Main Layout */
+.checkout-page {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+}
+
+/* Checkout Container Layout using CSS Grid */
+.checkout-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns: one for customer/payment, one for order summary */
+    gap: 2rem;
+}
+
+    /* Section Headings */
+    .checkout-container h2 {
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 0.5rem;
+    }
+
+/* Customer Details & Payment Details Sections */
+.customer-details,
+.payment-details {
+    background-color: #fafafa;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.3rem;
+        font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+/* Payment Details - Updated to Radio Buttons */
+.payment-details .form-group {
+    margin-bottom: 1rem;
+}
+
+/* Payment Options Container */
+.payment-options {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+    .payment-options label {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    .payment-options input[type="radio"] {
+        cursor: pointer;
+    }
+
+/* Order Summary Section */
+.order-summary {
+    background-color: #fafafa;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+    .summary-item.total {
+        font-weight: bold;
+        border-top: 1px solid #ccc;
+        padding-top: 0.5rem;
+        margin-top: 1rem;
+    }
+
+/* Checkout Button */
+.checkout-btn {
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .checkout-btn:hover {
+        background-color: #218838;
+    }
+
+/* Responsive: Stack columns on smaller screens */
+@media (max-width: 768px) {
+    .checkout-container {
+        grid-template-columns: 1fr;
+    }
+}
