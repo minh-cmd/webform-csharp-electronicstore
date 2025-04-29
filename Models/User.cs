@@ -10,7 +10,7 @@ namespace btlwebcoban
         public string FirstName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string Country { get; set; }
+        public string Birthday { get; set; }
         public string Gender { get; set; }
         public string Address { get; set; }
 
@@ -18,7 +18,7 @@ namespace btlwebcoban
         {
         }
 
-        public User(string username, string password, string lastName, string firstName, string email, string phone, string country, string gender, string address)
+        public User(string username, string password, string lastName, string firstName, string email, string phone, string birthday, string gender, string address)
         {
             Username = username;
             Password = password;
@@ -26,7 +26,7 @@ namespace btlwebcoban
             FirstName = firstName;
             Email = email;
             Phone = phone;
-            Country = country;
+            Birthday = birthday;
             Gender = gender;
             Address = address;
         }

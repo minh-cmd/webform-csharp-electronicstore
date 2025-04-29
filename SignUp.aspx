@@ -86,8 +86,8 @@
             <label for="phone">Số điện thoại</label>
             <input type="tel" id="phone" name="phone" class="text-input" placeholder="Nhập số điện thoại" />
 
-            <label for="birthday">Quốc gia</label>
-            <input type="text" id="birthday" name="birthday" class="text-input" placeholder="quốc gia" minlength="6" title="Phải có ít nhất 6 ký tự" required/>
+            <label for="birthday">Ngày sinh</label>
+            <input type="date" id="birthday" name="birthday" class="text-input" placeholder="Ngày sinh"/>
 
             <label id="gender">Giới tính</label>
             <div class="gender">

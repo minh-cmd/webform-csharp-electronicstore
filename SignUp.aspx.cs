@@ -41,13 +41,6 @@ namespace btlwebcoban
                     errorMessage.InnerHtml = "Mật khẩu không khớp.";
                     return;
                 }
-
-                if (!Regex.IsMatch(birthday, @"^[^\d]{6,}$"))
-                {
-                    errorMessage.InnerHtml = "Tối thiểu 6 kí tự không chứa ký tự số";
-                    return;
-                }
-
                 // No lock
                 List<User> users = (List<User>)Application["Users"];
                 if (users == null)
@@ -79,7 +72,7 @@ namespace btlwebcoban
                     FirstName = firstName,
                     Email = email,
                     Phone = phone,
-                    Country = birthday,
+                    Birthday = birthday,
                     Gender = gender,
                     Address = address
                 };
@@ -87,7 +80,6 @@ namespace btlwebcoban
                 users.Add(newUser);
                 Application["Users"] = users;
 
-                // No ClientScript, just redirect
                 Response.Redirect("AccountList.aspx");
             }
         }

@@ -67,7 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AccountList.aspx" />
     <Content Include="cart.aspx" />
     <Content Include="CheckOut.aspx" />
     <Content Include="css\cart.css" />
@@ -146,13 +145,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountList.aspx.cs">
-      <DependentUpon>AccountList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AccountList.aspx.designer.cs">
-      <DependentUpon>AccountList.aspx</DependentUpon>
-    </Compile>
     <Compile Include="cart.aspx.cs">
       <DependentUpon>cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

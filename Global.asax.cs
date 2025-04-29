@@ -89,21 +89,6 @@ namespace btlwebcoban
             Application["Products"] = products;
 
 
-            // Initialize the user list
-            List<User> users = new List<User>();
-            users.Add(new User
-            {
-                Username = "testuser",
-                Password = "password123",
-                LastName = "Nguyen",
-                FirstName = "Test",
-                Email = "testuser@example.com",
-                Phone = "0987654321",
-                Country = "việt nam",
-                Gender = "male",
-                Address = "123 Test Street"
-            });
-            Application["Users"] = users;
         }
 
         protected void Session_Start(object sender, EventArgs e)
