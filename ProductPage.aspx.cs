@@ -392,11 +392,33 @@ namespace btlwebcoban
         {
             List<Product> products = (List<Product>)Application["Products"];
 
+            List<Product> searchBar = searchProduct(products);
 
-            List<Product> filterByCatagory = FilterByCatagory(products);
+            List<Product> filterByCatagory = FilterByCatagory(searchBar);
             List<Product> filterByPrice = FilterByPrice(filterByCatagory);
 
             return filterByPrice;
+        }
+
+        private List<Product> searchProduct(List<Product> products)
+        {
+            List<Product> filteredProduct = new List<Product>();
+            string SearchTerm = Request.QueryString.Get("search");
+            if (!String.IsNullOrEmpty(SearchTerm))
+            {
+                foreach(Product p in products)
+                {
+                    if (p.ProductName.Contains(SearchTerm) || p.ProductKind.Contains(SearchTerm))
+                    {
+                        filteredProduct.Add(p);
+                    }
+                }
+            }
+            else
+            {
+                filteredProduct = products;
+            }
+            return filteredProduct;
         }
         private List<Product> SearchBar_ProductPage()
         {
