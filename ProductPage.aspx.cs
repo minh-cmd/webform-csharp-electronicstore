@@ -56,6 +56,51 @@ namespace btlwebcoban
             return filteredProducts;
         }
 
+        private List<Product> FilterByCatagory(List<Product> products)
+        {
+            List<Product> filteredProduct = new List<Product>();
+            string categroryselect = Request.QueryString.Get("category");
+            if (String.IsNullOrEmpty(categroryselect))
+            {
+                filteredProduct = products;
+            }
+            else
+            {
+                foreach (Product p in products)
+                {
+                    if (p.ProductKind.Equals(categroryselect) || categroryselect.Equals("tatca"))
+                    {
+                        filteredProduct.Add(p);
+                    }
+                }
+            }
+            return filteredProduct;
+        }
+
+        private List<Product> FilterByPrice(List<Product> products)
+        {
+            string pricerange = Request.QueryString.Get("pricerange");
+            // Filter by price if a price range is selected
+            if (!string.IsNullOrEmpty(pricerange))
+            {
+                switch (pricerange)
+                {
+                    case "all":
+                        break;
+                    case "under500":
+                        products = FilterByPriceUnder500(products);
+                        break;
+                    case "500to1500":
+                        products = FilterByPrice500to1500(products);
+                        break;
+                    case "above1500":
+                        products = FilterByPriceAbove1500(products);
+                        break;
+                }
+            }
+            return products;
+        }
+
         private void NavbarCartCount()
         {
             List<CartItem> list = (List<CartItem>)Session["cartitem"];
@@ -345,52 +390,30 @@ namespace btlwebcoban
         }
         private List<Product> filterProduct()
         {
-            string categroryselect = Request.QueryString.Get("category");
-            string pricerange = Request.QueryString.Get("pricerange");
             List<Product> products = (List<Product>)Application["Products"];
-            List<Product> SelectedProduct = new List<Product>();
 
-            if (!string.IsNullOrEmpty(categroryselect))
-            {
-                List<Product> filteredByCategory = new List<Product>();
-                foreach (Product p in products)
-                {
-                    if (p.ProductKind.Equals(categroryselect) || categroryselect.Equals("all"))
-                    {
-                        filteredByCategory.Add(p);
-                    }
-                }
-                products = filteredByCategory;
-            }
 
-            // Filter by price if a price range is selected
-            if (!string.IsNullOrEmpty(pricerange))
-            {
-                switch (pricerange)
-                {
-                    case "all":
-                        break;
-                    case "under500":
-                        products = FilterByPriceUnder500(products);
-                        break;
-                    case "500to1500":
-                        products = FilterByPrice500to1500(products);
-                        break;
-                    case "above1500":
-                        products = FilterByPriceAbove1500(products);
-                        break;
-                }
-            }
-            return products;
+            List<Product> filterByCatagory = FilterByCatagory(products);
+            List<Product> filterByPrice = FilterByPrice(filterByCatagory);
+
+            return filterByPrice;
         }
-
         private List<Product> SearchBar_ProductPage()
         {
-            List<Product> products = (List<Product>) Application["products"];
+            List<Product> products = (List<Product>)Application["products"];
+            Product returnProduct;
             string searchTerm = Request.QueryString.Get("search");
+            searchTerm = searchTerm.Trim().ToLower();
             if (!string.IsNullOrEmpty(searchTerm))
             {
-
+                foreach (Product p in products) 
+                {
+                    if (p.ProductName.ToLower().Trim().Contains(searchTerm) || p.ProductKind.ToLower().Trim().Contains(searchTerm))
+                    {
+                        returnProduct = p;
+                        break;
+                    }
+                }
             }
             return products;
         }

@@ -272,7 +272,6 @@ namespace btlwebcoban
         {
             string searchTerm = Request.Form.Get("search");
             if (!string.IsNullOrEmpty(searchTerm)) {
-                Session["seachTerm"] = searchTerm;
                 Response.Redirect("ProductPage.aspx?search="+searchTerm);
             }
         }

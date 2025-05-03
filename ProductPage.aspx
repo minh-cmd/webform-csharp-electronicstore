@@ -80,7 +80,7 @@
                 <div class="filter-group">
                     <label for="category-select">Lọc danh sách:</label>
                     <select id="category-select" name="category">
-                        <option value="all">tất cả</option>
+                        <option value="all" selected>tất cả</option>
                         <option value="maygiat">máy giặt</option>
                         <option value="television">TV</option>
                         <option value="tulanh">tủ lạnh</option>
@@ -91,7 +91,7 @@
                 <div class="filter-price">
                     <span>Giá:</span>
                     <label>
-                        <input type="radio" name="priceRange" value="all" />
+                        <input type="radio" name="priceRange" value="all" checked/>
                         Tất cả
                     </label>
                     <label>
