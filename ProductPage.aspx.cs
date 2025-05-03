@@ -68,7 +68,7 @@ namespace btlwebcoban
             {
                 foreach (Product p in products)
                 {
-                    if (p.ProductKind.Equals(categroryselect) || categroryselect.Equals("tatca"))
+                    if (p.ProductKind.Equals(categroryselect) || categroryselect.Equals("all"))
                     {
                         filteredProduct.Add(p);
                     }
