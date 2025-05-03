@@ -267,5 +267,14 @@ namespace btlwebcoban
                 divbutton.Attributes["class"] = "product_button";*/
             }
         }
+
+        protected void SearchBar(object sender, EventArgs e)
+        {
+            string searchTerm = Request.Form.Get("search");
+            if (!string.IsNullOrEmpty(searchTerm)) {
+                Session["seachTerm"] = searchTerm;
+                Response.Redirect("ProductPage.aspx?search="+searchTerm);
+            }
+        }
     }
 }

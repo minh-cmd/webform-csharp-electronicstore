@@ -42,7 +42,7 @@
                     <li>
                         <div class="search_bar">
                             <input type="text" id="txtSearch" name="search" class="search_input" placeholder="Tìm kiếm sản phẩm..." />
-                            <button type="button" class="search_button">Tìm kiếm</button>
+                            <button type="submit" class="search_button" onserverclick="SearchBar" runat="server">Tìm kiếm</button>
                         </div>
                     </li>
                     <li><a href="Home.aspx">Trang chủ</a></li>

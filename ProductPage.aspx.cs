@@ -187,7 +187,6 @@ namespace btlwebcoban
             }
             Response.Redirect("cart.aspx");
         }
-
         protected void btnProductDetail_Click(object sender, EventArgs e)
         {
             HtmlGenericControl div = (HtmlGenericControl)sender;
@@ -344,7 +343,6 @@ namespace btlwebcoban
             }
             NavbarCartCount();
         }
-
         private List<Product> filterProduct()
         {
             string categroryselect = Request.QueryString.Get("category");
@@ -371,7 +369,6 @@ namespace btlwebcoban
                 switch (pricerange)
                 {
                     case "all":
-                        products = products;
                         break;
                     case "under500":
                         products = FilterByPriceUnder500(products);
@@ -383,6 +380,17 @@ namespace btlwebcoban
                         products = FilterByPriceAbove1500(products);
                         break;
                 }
+            }
+            return products;
+        }
+
+        private List<Product> SearchBar_ProductPage()
+        {
+            List<Product> products = (List<Product>) Application["products"];
+            string searchTerm = Request.QueryString.Get("search");
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+
             }
             return products;
         }
