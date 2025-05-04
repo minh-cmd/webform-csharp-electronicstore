@@ -15,37 +15,6 @@ namespace btlwebcoban
         protected void Page_Load(object sender, EventArgs e)
         {
             ProductLoad();
-            NavbarCartCount();
-        }
-
-        protected void toSignUp(object sender, EventArgs e)
-        {
-            Response.Redirect("SignUp.aspx");
-        }
-
-        protected void toSignIn(object sender, EventArgs e)
-        {
-            Response.Redirect("SignIn.aspx");
-        }
-
-        private void NavbarCartCount()
-        {
-            List<CartItem> list = (List<CartItem>) Session["cartitem"];
-            if(list != null)
-            {
-                int ProductinCart = 0;
-                foreach (var item in list)
-                {
-                    ProductinCart += item.ProductQuantity;
-                }
-                cartcount.InnerText = ProductinCart.ToString();
-                cartcount.Style["display"] = "block";
-            }
-            else
-            {
-                cartcount.InnerText = "";
-                cartcount.Style["display"] = "none";
-            }
         }
         protected void btnaddtocart_click(object sender, EventArgs e)
         {
@@ -95,7 +64,8 @@ namespace btlwebcoban
                     break;
                 }
             }
-            NavbarCartCount();
+            Site1 masterpage = (Site1)this.Master;
+            masterpage.NavbarCartCount();
         }
         protected void btnBuyNow_click(object sender, EventArgs e)
         {
@@ -147,7 +117,6 @@ namespace btlwebcoban
             }
             Response.Redirect("cart.aspx");
         }
-
         protected void btnProductDetail_Click(object sender, EventArgs e)
         {
             HtmlGenericControl div = (HtmlGenericControl)sender;
@@ -268,12 +237,5 @@ namespace btlwebcoban
             }
         }
 
-        protected void SearchBar(object sender, EventArgs e)
-        {
-            string searchTerm = Request.Form.Get("search");
-            if (!string.IsNullOrEmpty(searchTerm)) {
-                Response.Redirect("ProductPage.aspx?search="+searchTerm);
-            }
-        }
     }
 }

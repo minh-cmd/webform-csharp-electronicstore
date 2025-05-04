@@ -12,7 +12,7 @@ namespace btlwebcoban
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            NavbarCartCount();
+                NavbarCartCount();
         }
 
         protected void toSignUp(object sender, EventArgs e)
