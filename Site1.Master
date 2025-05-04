@@ -1,0 +1,89 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="btlwebcoban.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server"></asp:ContentPlaceHolder>
+    </title>
+    <link rel="stylesheet" href="~/css/navigationbar.css">
+    <link rel="stylesheet" href="~/css/footer.css">
+    <asp:ContentPlaceHolder ID="SciptAndCss" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="Home.aspx">MinhElectronic</a>
+                </div>
+                <input type="checkbox" id="hamburger_checkbox">
+                <label for="hamburger_checkbox" class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <ul>
+                    <li>
+                        <div class="search_bar">
+                            <input type="text" id="txtSearch" name="search" class="search_input" placeholder="Tìm kiếm sản phẩm..." />
+                            <button type="submit" class="search_button" onserverclick="SearchBar" runat="server">Tìm kiếm</button>
+                        </div>
+                    </li>
+                    <li><a href="Home.aspx">Trang chủ</a></li>
+                    <li><a href="ProductPage.aspx">Sản phẩm</a></li>
+                    <li>
+                        <a href="cart.aspx">Giỏ hàng</a>
+                        <div id="cartcount" class="cart_count" runat="server"></div>
+                    </li>
+                    <li>
+                        <button type="button" onserverclick="toSignIn" runat="server">Đăng nhập</button></li>
+                    <li>
+                        <button type="button" onserverclick="toSignUp" runat="server">Đăng kí</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+
+        <footer class="footer">
+            <div class="footer-container">
+
+                <div class="footer-about">
+                    <h3>Về MinhElectronic</h3>
+                    <p>Cửa hàng tiện ích điện tử với nhiều hàng giá rẻ, phải chăng, chất lượng tốt.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Các trang liên quan</h3>
+                    <ul>
+                        <li><a href="home.html">Trang chủ</a></li>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Sản phẩm</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-social">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <ul>
+                        <li><a href="#" target="_blank">Facebook</a></li>
+                        <li><a href="#" target="_blank">Twitter</a></li>
+                        <li><a href="#" target="_blank">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MinhElectronic. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
