@@ -20,7 +20,9 @@ namespace btlwebcoban
         {
             HtmlButton btn = (HtmlButton)sender;
             int productid = int.Parse(btn.ID.Replace("btnAddToCart_", ""));
-            string productquanity = Request.Form.Get("quantity_" + productid);
+            string fieldName = Request.Form.AllKeys.FirstOrDefault(k => k.EndsWith("quantity_" + productid));
+            string productquanity = Request.Form[fieldName];
+
 
             int productQuantity = 1;
             if (!string.IsNullOrEmpty(productquanity))
@@ -176,6 +178,7 @@ namespace btlwebcoban
                 input.Value = "1";
                 input.ID = "quantity_" + a.ProductID; // e.g., "quantity_1"
                 input.Name = "quantity_" + a.ProductID; // Match the ID
+                input.Attributes["name"] = 
                 input.Attributes["readonly"] = "readonly";
                 input.Attributes["class"] = "quantity";
                 divproductquantitycontrol.Controls.Add(input);
