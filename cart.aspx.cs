@@ -15,7 +15,8 @@ namespace btlwebcoban
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadCart();
-            NavbarCartCount();
+            Site1 masterpage = (Site1)this.Master;
+            masterpage.NavbarCartCount();
         }
         protected void toSignUp(object sender, EventArgs e)
         {
@@ -24,26 +25,6 @@ namespace btlwebcoban
         protected void toSignIn(object sender, EventArgs e)
         {
             Response.Redirect("SignIn.aspx");
-        }
-        private void NavbarCartCount()
-        {
-            List<CartItem> list = (List<CartItem>)Session["cartitem"];
-            if (list != null)
-            {
-                int ProductinCart = 0;
-                foreach (var item in list)
-                {
-                    ProductinCart += item.ProductQuantity;
-                }
-                cartcount.InnerText = ProductinCart.ToString();
-                cartcount.Style["display"] = "block";
-            }
-            else
-            {
-                cartcount.InnerText = "";
-                cartcount.Style["display"] = "none";
-            }
-
         }
         protected void btnIncreaseQuantity_Click(object sender, EventArgs e)
         {
@@ -61,7 +42,8 @@ namespace btlwebcoban
             }
             Session["cartitem"] = items;
             LoadCart();
-            NavbarCartCount();
+            Site1 masterpage = (Site1)this.Master;
+            masterpage.NavbarCartCount();
         }
         protected void btnDecreaseQuantity_Click(object sender, EventArgs e)
         {
@@ -79,13 +61,15 @@ namespace btlwebcoban
             }
             Session["cartitem"] = items;
             LoadCart();
-            NavbarCartCount();
+            Site1 masterpage = (Site1)this.Master;
+            masterpage.NavbarCartCount();
         }
         protected void btnClearCart_Click(object sender, EventArgs e)
         {
             Session["cartitem"] = null;
             LoadCart();
-            NavbarCartCount();
+            Site1 masterpage = (Site1)this.Master;
+            masterpage.NavbarCartCount();
         }
         protected void DeleteItem_Click(object sender, EventArgs e)
         {
@@ -102,7 +86,8 @@ namespace btlwebcoban
             }
             Session["cartitem"] = list;
             LoadCart();
-            NavbarCartCount();
+            Site1 masterpage = (Site1)this.Master;
+            masterpage.NavbarCartCount();
         }
 
         protected void ToCheckOut_ServerClick(object sender, EventArgs e)
