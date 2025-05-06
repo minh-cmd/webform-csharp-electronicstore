@@ -20,15 +20,15 @@ namespace btlwebcoban
         {
             HtmlButton btn = (HtmlButton)sender;
             int productid = int.Parse(btn.ID.Replace("btnAddToCart_", ""));
-            string fieldName = Request.Form.AllKeys.FirstOrDefault(k => k.EndsWith("quantity_" + productid));
+            string fieldName = Request.Form.AllKeys.FirstOrDefault(k => k.EndsWith("quantity_" + productid)); //the maincontent of master page made me code this line
             string productquanity = Request.Form[fieldName];
 
 
-            int productQuantity = 1;
-            if (!string.IsNullOrEmpty(productquanity))
+            int productQuantity = int.Parse(productquanity);
+/*            if (!string.IsNullOrEmpty(productquanity))
             {
                 int.TryParse(productquanity, out productQuantity);
-            }
+            }*/
 
             List<Product> list = (List<Product>)Application["HomeProducts"];
             List<CartItem> cartlist;
