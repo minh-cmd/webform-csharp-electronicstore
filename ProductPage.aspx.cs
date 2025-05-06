@@ -14,7 +14,8 @@ namespace btlwebcoban
         protected void Page_Load(object sender, EventArgs e)
         {
             ProductLoad(filterProduct());
-            NavbarCartCount();
+            Site1 masterpage = (Site1)this.Master;
+            masterpage.NavbarCartCount();
         }
 
         private List<Product> FilterByPriceUnder500(List<Product> products)
@@ -101,26 +102,6 @@ namespace btlwebcoban
             return products;
         }
 
-        private void NavbarCartCount()
-        {
-            List<CartItem> list = (List<CartItem>)Session["cartitem"];
-            if (list != null)
-            {
-                int ProductinCart = 0;
-                foreach (var item in list)
-                {
-                    ProductinCart += item.ProductQuantity;
-                }
-                cartcount.InnerText = ProductinCart.ToString();
-                cartcount.Style["display"] = "block";
-            }
-            else
-            {
-                cartcount.InnerText = "";
-                cartcount.Style["display"] = "none";
-            }
-        }
-
         protected void toSignIn(object sender, EventArgs e)
         {
             Response.Redirect("SignIn.aspx");
@@ -136,15 +117,11 @@ namespace btlwebcoban
         {
             HtmlButton btn = (HtmlButton)sender;
             int productid = int.Parse(btn.ID.Replace("btnAddToCart_", ""));
-            string productquanity = Request.Form.Get("quantity_" + productid);
+            string fieldName = Request.Form.AllKeys.FirstOrDefault(k => k.EndsWith("quantity_"+productid)); //the maincontent of master page made me code this line
+            string productquanity = Request.Form[fieldName];
+            int productQuantity = int.Parse(productquanity);
 
-            int productQuantity = 1;
-            if (!string.IsNullOrEmpty(productquanity))
-            {
-                int.TryParse(productquanity, out productQuantity);
-            }
-
-                List<Product> list = (List<Product>)Application["Products"];
+            List<Product> list = (List<Product>)Application["Products"];
             List<CartItem> cartlist;
 
 
@@ -180,21 +157,18 @@ namespace btlwebcoban
                     break;
                 }
             }
-            NavbarCartCount();
+            Site1 masterpage = (Site1)this.Master;
+            masterpage.NavbarCartCount();
         }
         protected void btnBuyNow_click(object sender, EventArgs e)
         {
             HtmlButton btn = (HtmlButton)sender;
             int productid = int.Parse(btn.ID.Replace("btnBuyNow_", ""));
-            string productquanity = Request.Form.Get("quantity_" + productid);
+            string fieldName = Request.Form.AllKeys.FirstOrDefault(k => k.EndsWith("quantity_" + productid)); //the maincontent of master page made me code this line
+            string productquanity = Request.Form[fieldName];
+            int productQuantity = int.Parse(productquanity);
 
-            int productQuantity = 1;
-            if (!string.IsNullOrEmpty(productquanity))
-            {
-                int.TryParse(productquanity, out productQuantity);
-            }
-
-            List<Product> list = (List<Product>)Application["HomeProducts"];
+            List<Product> list = (List<Product>)Application["Products"];
             List<CartItem> cartlist;
 
 
@@ -386,7 +360,8 @@ namespace btlwebcoban
                 HtmlGenericControl divbutton = new HtmlGenericControl("div");
                 divbutton.Attributes["class"] = "product_button";*/
             }
-            NavbarCartCount();
+            Site1 masterpage = (Site1)this.Master;
+            masterpage.NavbarCartCount();
         }
         private List<Product> filterProduct()
         {
