@@ -89,7 +89,6 @@ namespace btlwebcoban
             Site1 masterpage = (Site1)this.Master;
             masterpage.NavbarCartCount();
         }
-
         protected void ToCheckOut_ServerClick(object sender, EventArgs e)
         {
             List<CartItem> list = (List<CartItem>)Session["cartitem"];
