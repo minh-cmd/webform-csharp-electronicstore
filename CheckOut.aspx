@@ -54,8 +54,14 @@
             </section>
 
             <!-- Order Summary Section -->
-            <section class="order-summary">
+            <section class="order-summary" id="order_summary">
+
                 <h2>Hoá đơn</h2>
+                <span>Sản phẩm:</span>
+                <div class="item_container" id="ItemContainer" runat="server">
+
+                </div>
+
                 <div class="summary-item">
                     <span>Giá hàng:</span>
                     <span id="itemsummary" runat="server">0.00VND</span>
