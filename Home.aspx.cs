@@ -15,6 +15,8 @@ namespace btlwebcoban
         protected void Page_Load(object sender, EventArgs e)
         {
             ProductLoad();
+            Site1 masterpage = (Site1)this.Master;
+            masterpage.NavbarCartCount();
         }
         protected void btnaddtocart_click(object sender, EventArgs e)
         {
@@ -73,13 +75,10 @@ namespace btlwebcoban
         {
             HtmlButton btn = (HtmlButton)sender;
             int productid = int.Parse(btn.ID.Replace("btnBuyNow_", ""));
-            string productquanity = Request.Form.Get("quantity_" + productid);
+            string fieldname = Request.Form.AllKeys.FirstOrDefault(k => k.EndsWith("quantity_" + productid));
+            string productquanity = Request.Form.Get(fieldname);
 
-            int productQuantity = 1;
-            if (!string.IsNullOrEmpty(productquanity))
-            {
-                int.TryParse(productquanity, out productQuantity);
-            }
+            int productQuantity = int.Parse(productquanity);
 
             List<Product> list = (List<Product>)Application["HomeProducts"];
             List<CartItem> cartlist;

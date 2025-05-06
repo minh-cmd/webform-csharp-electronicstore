@@ -33,25 +33,6 @@
     <h1 class="section_title">Các sản phẩm nổi bật</h1>
     <section class="product_feature">
         <div class="product_container" id="ProductContainer" runat="server">
-            <%--<div class="product">
-                     <img src="../picture/tv1.png" alt="Product 1">
-                     <div class="product_info">
-                         <h3>Product 1</h3>
-                         <p>$99.99</p>
-                     </div>
-                     <div class="product_actions">
-                         <div class="product_quantity_control">
-                             <button class="decrease">-</button>
-                             <input type="number" min="1" value="1" class="quantity">
-                             <button class="increase">+</button>
-                         </div>
-                         <div class="product_button">
-                             <button class="add_to_cart">Add to Cart</button>
-                             <button class="buy_now" runat="server" onserverclick="btnBuyNow_click">Buy Now</button>
-                         </div>
-                     </div>
-                 </div>
-            --%>
         </div>
     </section>
 
